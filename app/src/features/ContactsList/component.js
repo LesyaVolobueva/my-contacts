@@ -1,0 +1,23 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import Contact from './ContactsItem';
+
+const ContactsList = ({
+    contacts,
+}) => {
+    return (
+        <div className="contact-list" >
+            {contacts.map(item => (
+                <Contact
+                    key={item.id}
+                    contact={item}
+                />
+                )
+            )}
+        </div>
+    );
+};
+
+ContactsList.propTypes = {};
+
+export default ContactsList;
