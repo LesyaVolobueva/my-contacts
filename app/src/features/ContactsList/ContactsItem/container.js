@@ -1,38 +1,27 @@
-import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { updateContactThunk } from '../actions';
+import Contact from './component';
 
 class ContactItemContainer extends Component {
+    changeFavourites = (contact) => {
+        this.props.updateContactThunk({
+            ...contact,
+            favourites: !contact.favourites,
+        })
+    };
+
     render() {
-        const {contact} = this.props;
+        const { contact, group, showModal } = this.props;
+
         return (
-            <div className='contact'>
-                <div className='contact__photo'>
-                    <img
-                        className='photo'
-                        src={contact.photoUrl}
-                        alt='avatar'
-                    />
-                </div>
-                <div className='contact__info'>
-                    <div className='contact__header'>
-                        <div>
-                            <Link
-                                className='contact__name'
-                                to={`/contacts/${contact.id}`}
-                            >
-                                {contact.name}
-                            </Link>
-                        </div>
-                        {contact.favourites &&
-                        <div className='contact__fav'>
-                            Favourites
-                            <i className='far far-star'/>
-                        </div>
-                        }
-                    </div>
-                </div>
-            </div>
+                <Contact
+                    contact={contact}
+                    group={group}
+                    changeFavourites={this.changeFavourites}
+                    deleteContact={showModal}
+                />
         );
     }
 }
@@ -51,4 +40,9 @@ ContactItemContainer.propTypes = {
     }),
 };
 
-export default ContactItemContainer;
+export default connect(
+    null,
+    {
+        updateContactThunk,
+    }
+)(ContactItemContainer);

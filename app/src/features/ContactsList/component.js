@@ -4,6 +4,8 @@ import Contact from './ContactsItem';
 
 const ContactsList = ({
     contacts,
+    groups,
+    showModal,
 }) => {
     return (
         <div className="contact-list" >
@@ -11,6 +13,8 @@ const ContactsList = ({
                 <Contact
                     key={item.id}
                     contact={item}
+                    group={groups.find(group => group.id === item.groupId)}
+                    showModal={showModal}
                 />
                 )
             )}
