@@ -1,10 +1,8 @@
 const express = require('express')
 const pluralize = require('pluralize')
-const delay = require('./delay')
 
 module.exports = opts => {
   const router = express.Router()
-  router.use(delay)
 
   // Rewrite URL (/:resource/:id/:nested -> /:nested) and request query
   function get(req, res, next) {

@@ -1,17 +1,5 @@
 # Change Log
 
-## 0.12.2 - 2018-04-26
-
-* Add `_delay` query parameter
-* Upgrade `please-upgrade-node` dependency
-
-## 0.12.1 - 2017-11-02
-
-* Disable logging for static content requests
-* Remove bad `console.log`
-* Update `dependencies`
-* Use [`nanoid`](https://github.com/ai/nanoid)
-
 ## 0.12.0 - 2017-08-02
 
 Re-include `body-parser` in `jsonServer.defaults()`

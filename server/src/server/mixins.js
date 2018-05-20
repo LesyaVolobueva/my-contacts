@@ -1,4 +1,4 @@
-const nanoid = require('nanoid')
+const shortid = require('shortid')
 const pluralize = require('pluralize')
 
 module.exports = {
@@ -48,7 +48,7 @@ function createId(coll) {
     let id = _(coll).maxBy(idProperty)[idProperty]
 
     // Increment integer id or generate string id
-    return _.isFinite(id) ? ++id : nanoid(7)
+    return _.isFinite(id) ? ++id : shortid.generate()
   }
 }
 
@@ -67,12 +67,7 @@ function deepQuery(value, q) {
           return true
         }
       }
-    } else if (
-      value
-        .toString()
-        .toLowerCase()
-        .indexOf(q) !== -1
-    ) {
+    } else if (value.toString().toLowerCase().indexOf(q) !== -1) {
       return true
     }
   }
