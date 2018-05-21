@@ -50,3 +50,20 @@ export const deleteContactThunk = (id) => (
     )
 );
 
+export const setCurrentContactId = (payload) => ({
+    type: types.SET_CURRENT_CONTACT,
+    payload,
+});
+
+export const getCurrentContact = (payload) => ({
+    type: types.GET_CURRENT_CONTACT,
+    payload,
+});
+
+export const getCurrentContactThunk = (id) => (
+    (dispatch, _, api) => (
+        api(`contacts/${id}`)
+            .then((response) => dispatch(getCurrentContact(response.data)))
+    )
+)
+

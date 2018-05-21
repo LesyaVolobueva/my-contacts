@@ -6,7 +6,7 @@ import {
     getContactsThunk,
     getGroupsThunk,
     deleteContactThunk,
-} from './actions';
+} from '../actions';
 import ContactsList from './component';
 
 class ContactsListContainer extends Component {

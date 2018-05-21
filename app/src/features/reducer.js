@@ -3,6 +3,7 @@ import * as types from './types';
 export const initialState = {
     contacts: [],
     groups: [],
+    currentContact: null,
 };
 
 export default function reducer(state = initialState, action) {
@@ -48,6 +49,12 @@ export default function reducer(state = initialState, action) {
                 contacts: [
                     ...state.contacts.filter(contact => contact.id !== payload.id),
                 ],
+            };
+
+        case types.GET_CURRENT_CONTACT :
+            return {
+                ...state,
+                currentContact: payload,
             };
 
 

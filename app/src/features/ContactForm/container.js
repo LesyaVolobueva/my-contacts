@@ -1,14 +1,33 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
+import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 import CustomField from '../../components/Field';
 import Button from '../../components/Button';
-import { updateContactThunk } from '../ContactsList/actions';
-import { findContact } from '../ContactsList/selectors';
+import { updateContactThunk, getGroupsThunk, getCurrentContactThunk } from '../actions';
+import { getContact } from '../selectors';
+
 
 class ContactFormContainer extends Component {
+    componentDidMount() {
+        const { groups, getGroupsThunk, location: { pathname } } = this.props;
+
+        if (!groups.length) {
+            getGroupsThunk();
+        }
+        this.getContactFromUrl(pathname);
+    }
+
+    getContactFromUrl(pathname) {
+        const contactId = pathname.split('/')[2];
+
+        if (contactId) {
+            this.props.getCurrentContactThunk(contactId);
+        }
+    }
+
     required = value => (value ? undefined : 'Required');
 
     number = value => (
@@ -39,11 +58,11 @@ class ContactFormContainer extends Component {
     };
 
     updateContact = (contact) => {
-        console.log(contact);
-    }
+        this.props.updateContactThunk(contact);
+    };
 
     render() {
-        const { handleSubmit, groups, initialValues: { photoUrl } } = this.props;
+        const { handleSubmit, groups, initialValues } = this.props;
 
         return (
             <div>
@@ -51,19 +70,20 @@ class ContactFormContainer extends Component {
                     className='edit-form'
                     onSubmit={handleSubmit(this.updateContact)}
                 >
-                    <div className='contact__field'>
+                    {initialValues && <div className='contact__field'>
                         <img
-                            src={photoUrl}
+                            src={initialValues.photoUrl}
                             alt='avatar'
                             className='avatar'
                         />
-                    </div>
+                    </div>}
                     <Field
                         name='name'
                         type='text'
                         component={CustomField}
                         label='Name'
                         validate={[this.required]}
+                        placeholder='Enter the name'
                     />
                     <Field
                         name='mobPhone'
@@ -94,6 +114,7 @@ class ContactFormContainer extends Component {
                         component={CustomField}
                         label='Email'
                         validate={[this.email]}
+                        placeholder='email@exam.com'
                     />
                     <div className='contact__field'>
                         <label className='contact__label'>Group</label>
@@ -110,12 +131,16 @@ class ContactFormContainer extends Component {
                                 >{group.title}</option>)}
                         </Field>
                     </div>
-                    <Field
-                        name='description'
-                        type='textarea'
-                        component={CustomField}
-                        label='Description'
-                    />
+                    <div className='contact__field'>
+                        <label className='contact__label'>Description</label>
+                        <Field
+                            name='description'
+                            component='textarea'
+                            className='contact__input'
+                            placeholder='Description'
+                        >
+                        </Field>
+                    </div>
                     <div className='contact__field'>
                         <Button
                             type='submit'
@@ -128,16 +153,22 @@ class ContactFormContainer extends Component {
     }
 }
 
-ContactFormContainer.propTypes = {};
+ContactFormContainer.propTypes = {
+    groups: PropTypes.arrayOf(Object),
+    getGroupsThunk: PropTypes.func,
+};
 
 export default compose(
+    withRouter,
     connect(
         (state, ownProps) => ({
-            initialValues: findContact(state, ownProps),
+            initialValues: getContact(state, ownProps),
             groups: state.contacts.groups,
         }),
         {
             updateContactThunk,
+            getGroupsThunk,
+            getCurrentContactThunk,
         }
     ),
     reduxForm({

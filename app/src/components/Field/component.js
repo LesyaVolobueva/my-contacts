@@ -6,6 +6,7 @@ const CustomField = ({
     label,
     input,
     meta: { touched, error },
+    placeholder,
 }) => {
     return (
         <div className='contact__field'>
@@ -17,7 +18,7 @@ const CustomField = ({
                 className='contact__input'
                 {...input}
                 type={type}
-                placeholder={label}
+                placeholder={placeholder}
             />
             {touched && error &&
             <span className='inputError'>{error}</span>
@@ -30,6 +31,7 @@ CustomField.propTypes = {
     type: PropTypes.string,
     label: PropTypes.string,
     input: PropTypes.shape(Object),
+    placeholder: PropTypes.string,
 };
 
 export default CustomField;
