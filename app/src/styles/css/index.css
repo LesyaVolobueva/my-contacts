@@ -24,8 +24,7 @@
   .contact:hover {
     box-shadow: 5px 10px 5px #000; }
   .contact__photo {
-    width: 150px;
-    height: 150px;
+    height: 180px;
     border: 1px solid #333333;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
@@ -34,7 +33,7 @@
     display: flex;
     align-items: center;
     margin-right: 20px;
-    flex-basis: 20%; }
+    flex-basis: 25%; }
   .contact .photo {
     width: 100%;
     height: 100%;
@@ -47,7 +46,8 @@
   .contact__header {
     flex-basis: 100%;
     display: flex;
-    justify-content: space-between; }
+    justify-content: space-between;
+    align-items: flex-start; }
     .contact__header .labels {
       display: flex; }
   .contact__name {
@@ -111,7 +111,7 @@
 
 .contact-list {
   display: flex;
-  width: 50%;
+  width: 60%;
   min-height: 200px;
   margin: 20px auto;
   padding: 15px;
@@ -122,6 +122,12 @@
   flex-wrap: wrap; }
   .contact-list__no-items {
     color: #fff; }
+
+.create-new {
+  display: flex;
+  width: 60%;
+  margin: 20px auto;
+  justify-content: flex-end; }
 
 .button, .filter__search-btn {
   background: #333;
@@ -187,8 +193,8 @@
   margin-top: 10px; }
 
 .filter {
-  width: 50%;
-  padding: 20px;
+  width: 60%;
+  padding: 15px;
   margin: 20px auto;
   background: #333;
   color: #fff;

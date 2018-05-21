@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { updateContactThunk } from '../../actions';
+import { updateContactThunk } from '../../shared/actions';
 import Contact from './component';
 
 class ContactItemContainer extends Component {

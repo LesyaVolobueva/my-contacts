@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router';
 import ContactsList from './features/ContactsList';
 import CallsHistory from './features/CallsHistory';
 import ContactEditForm from './features/ContactEditForm';
-import Contact from './features/Contact';
+import Contact from './features/ContactView';
 
 class Routes extends React.Component {
     render() {

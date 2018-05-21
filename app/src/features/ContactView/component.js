@@ -23,25 +23,38 @@ const Contact = ({ contact, showModal }) => {
                 <div className='contact__name contact__name--render'>{contact.name}</div>
             </div>
             <div className='contact__field'>
-                <div className="icons">
-                    <div className="contact__icon contact__icon--render">
+                <div className='icons'>
+                    <div className='contact__icon contact__icon--render'>
                         <Link to={`/calls/${contact.id}`}>
-                            <img className='img'  src={history} alt="history"/>
+                            <img
+                                className='img'
+                                src={history}
+                                alt='history'
+                            />
                         </Link>
                     </div>
-                    <div className="contact__icon contact__icon--render">
+                    <div className='contact__icon contact__icon--render'>
                         <Link to={`/edit/${contact.id}`}>
-                            <img className='img'  src={edit} alt="edit"/>
+                            <img
+                                className='img'
+                                src={edit}
+                                alt='edit'
+                            />
                         </Link>
                     </div>
                     <div
-                        className="contact__icon contact__icon--render"
+                        className='contact__icon contact__icon--render'
                         onClick={showModal}
                     >
-                        <img className='img'  src={deleteImg} alt="delete"/>
+                        <img
+                            className='img'
+                            src={deleteImg}
+                            alt='delete'
+                        />
                     </div>
                 </div>
             </div>
+
         </div>
     );
 };

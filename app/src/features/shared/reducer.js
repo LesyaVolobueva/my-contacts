@@ -47,7 +47,7 @@ export default function reducer(state = initialState, action) {
             return {
                 ...state,
                 contacts: [
-                    ...state.contacts.filter(contact => contact.id !== payload.id),
+                    ...state.contacts.filter(contact => contact.id !== payload),
                 ],
             };
 

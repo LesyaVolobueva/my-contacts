@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
-import { getCurrentContactThunk, getGroupsThunk, deleteContactThunk } from '../actions';
+import { getCurrentContactThunk, getGroupsThunk, deleteContactThunk } from '../shared/actions';
 import Contact from './component'
 import Modal from '../../components/Modal';
 
@@ -24,12 +24,12 @@ class ContactContainer extends Component {
         if (!groups.length) {
             getGroupsThunk();
         }
-    };
+    }
 
     getContactFromUrl = (pathname) => {
         const contactId = pathname.split('/')[2];
 
-        if (contactId) {
+        if (Number(contactId)) {
             this.props.getCurrentContactThunk(contactId);
         }
     };
@@ -37,14 +37,14 @@ class ContactContainer extends Component {
     hideModal = () => {
         this.setState({
             modalOpen: false,
-        })
+        });
     };
 
     showModal = (id) => {
         this.setState({
             modalOpen: true,
             deleteId: id,
-        })
+        });
     };
 
 
@@ -73,8 +73,10 @@ class ContactContainer extends Component {
 
 ContactContainer.propTypes = {
     groups: PropTypes.arrayOf(Object),
-    path: PropTypes.string,
+    pathname: PropTypes.string,
     currentContact: PropTypes.shape(Object),
+    getCurrentContactThunk: PropTypes.func,
+    getGroupsThunk: PropTypes.func,
 };
 
 export default compose(

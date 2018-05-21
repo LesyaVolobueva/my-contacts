@@ -1,6 +1,6 @@
 .contact-list {
   display: flex;
-  width: 50%;
+  width: 60%;
   min-height: 200px;
   margin: 20px auto;
   padding: 15px;
@@ -11,5 +11,11 @@
   flex-wrap: wrap; }
   .contact-list__no-items {
     color: #fff; }
+
+.create-new {
+  display: flex;
+  width: 60%;
+  margin: 20px auto;
+  justify-content: flex-end; }
 
 /*# sourceMappingURL=ContactList.css.map */

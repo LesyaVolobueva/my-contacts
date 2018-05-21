@@ -5,8 +5,13 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { reduxForm } from 'redux-form';
 import ContactEdit from './component';
-import { updateContactThunk, getGroupsThunk, getCurrentContactThunk } from '../actions';
-import { getContact } from '../selectors';
+import {
+    updateContactThunk,
+    getGroupsThunk,
+    getCurrentContactThunk,
+    addContactThunk,
+} from '../shared/actions';
+import { getContact } from '../shared/selectors';
 
 class ContactFormContainer extends Component {
     componentDidMount() {
@@ -16,12 +21,12 @@ class ContactFormContainer extends Component {
         if (!groups.length) {
             getGroupsThunk();
         }
-    };
+    }
 
     getContactFromUrl = (pathname) => {
         const contactId = pathname.split('/')[2];
 
-        if (contactId) {
+        if (Number.isInteger(contactId)) {
             this.props.getCurrentContactThunk(contactId);
         }
     };
@@ -56,15 +61,26 @@ class ContactFormContainer extends Component {
         return `${onlyNums.slice(0, 3)}-${onlyNums.slice(3, 6)}-${onlyNums.slice(6, 10)}`;
     };
 
-    updateContact = (contact) => {
-        this.props.updateContactThunk({
-            ...contact,
-            groupId: +contact.groupId,
-        });
+    saveContact = (contact) => {
+        if (!contact.id) {
+            this.props.addContactThunk(contact)
+                .then((newContact) => {
+                    this.props.history.push(`/contacts/${newContact.id}`);
+                });
+        } else {
+            this.props.updateContactThunk({
+                ...contact,
+                groupId: +contact.groupId,
+            }).then((newContact) => {
+                this.props.history.push(`/contacts/${newContact.id}`);
+            });
+        }
+
+
     };
 
     back = () => {
-        this.props.history.goBack()
+        this.props.history.goBack();
     };
 
     render() {
@@ -74,7 +90,7 @@ class ContactFormContainer extends Component {
                 required={this.required}
                 email={this.email}
                 normalizePhone={this.normalizePhone}
-                updateContact={this.updateContact}
+                updateContact={this.saveContact}
                 back={this.back}
             />
         );
@@ -84,6 +100,9 @@ class ContactFormContainer extends Component {
 ContactFormContainer.propTypes = {
     groups: PropTypes.arrayOf(Object),
     getGroupsThunk: PropTypes.func,
+    getCurrentContactThunk: PropTypes.func,
+    updateContactThunk: PropTypes.func,
+    addContactThunk: PropTypes.func,
 };
 
 export default compose(
@@ -97,6 +116,7 @@ export default compose(
             updateContactThunk,
             getGroupsThunk,
             getCurrentContactThunk,
+            addContactThunk,
         }
     ),
     reduxForm({

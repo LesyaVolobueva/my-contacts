@@ -33,7 +33,10 @@ export const updateContact = (payload) => ({
 export const updateContactThunk = (contact) => (
     (dispatch, _, api) => (
         api(`contacts/${contact.id}`, 'put', contact)
-            .then((response) => dispatch(updateContact(response.data)))
+            .then((response) => {
+                dispatch(updateContact(response.data));
+                return response.data;
+            })
     )
 );
 
@@ -46,14 +49,9 @@ export const deleteContact = (payload) => ({
 export const deleteContactThunk = (id) => (
     (dispatch, _, api) => (
         api(`contacts/${id}`, 'delete')
-            .then((response) => dispatch(deleteContact(response.data)))
+            .then(() => dispatch(deleteContact(id)))
     )
 );
-
-export const setCurrentContactId = (payload) => ({
-    type: types.SET_CURRENT_CONTACT,
-    payload,
-});
 
 export const getCurrentContact = (payload) => ({
     type: types.GET_CURRENT_CONTACT,
@@ -65,5 +63,20 @@ export const getCurrentContactThunk = (id) => (
         api(`contacts/${id}`)
             .then((response) => dispatch(getCurrentContact(response.data)))
     )
-)
+);
+
+export const addContact = (payload) => ({
+    type: types.ADD_CONTACT,
+    payload,
+});
+
+export const addContactThunk = (contact) => (
+    (dispatch, _, api) => (
+        api(`contacts`, 'post', contact)
+            .then((response) => {
+                dispatch(addContact(response.data));
+                return response.data;
+            })
+    )
+);
 

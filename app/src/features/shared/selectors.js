@@ -1,5 +1,16 @@
 export const getContact = (state) => (
-    state.contacts.currentContact
+    state.contacts.currentContact || {
+        id: null,
+        photoUrl: 'https://www.teksteshqip.com/img_upz/allart_full/63351.jpg',
+        name: '',
+        birthday: '',
+        mobPhone: '',
+        workPhone: '',
+        email: '',
+        groupId: '',
+        favourites: false,
+        description: '',
+    }
 );
 
 export const getFilteredContacts = (state) => {

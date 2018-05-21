@@ -6,10 +6,12 @@ import {
     getContactsThunk,
     getGroupsThunk,
     deleteContactThunk,
-} from '../actions';
-import { getFilteredContacts } from '../selectors';
+} from '../shared/actions';
+import { getFilteredContacts } from '../shared/selectors';
+import { Link } from 'react-router-dom';
 import ContactsList from './component';
 import Filter from '../Filter';
+import Button from '../../components/Button';
 
 class ContactsListContainer extends Component {
     constructor(props) {
@@ -21,9 +23,8 @@ class ContactsListContainer extends Component {
     }
 
     componentDidMount() {
-        if (!this.props.contacts.length) {
-            this.props.getContactsThunk();
-        }
+        this.props.getContactsThunk();
+
         if (!this.props.groups.length) {
             this.props.getGroupsThunk();
         }
@@ -32,14 +33,19 @@ class ContactsListContainer extends Component {
     hideModal = () => {
         this.setState({
             modalOpen: false,
-        })
+        });
     };
 
     showModal = (id) => {
         this.setState({
             modalOpen: true,
             deleteId: id,
-        })
+        });
+    };
+
+    onConfirm = (id) => {
+        this.props.deleteContactThunk(id)
+            .then(() => this.hideModal());
     };
 
     render() {
@@ -48,14 +54,19 @@ class ContactsListContainer extends Component {
 
         return (
             <div>
+                <div className='create-new'>
+                    <Link to='/edit/new'>
+                        <Button>Add contact</Button>
+                    </Link>
+                </div>
                 <Modal
                     onCancel={this.hideModal}
                     open={modalOpen}
                     confirmTitle='Delete'
                     title='Are you sure to delete this contact?'
-                    onConfirm={deleteContactThunk.bind(null, deleteId)}
+                    onConfirm={this.onConfirm.bind(null, deleteId)}
                 />
-                <Filter groups={groups}/>
+                <Filter groups={groups} />
                 <ContactsList
                     contacts={contacts}
                     groups={groups}
@@ -71,6 +82,7 @@ ContactsListContainer.propTypes = {
     groups: PropTypes.arrayOf(Object),
     getGroupsThunk: PropTypes.func,
     getContactsThunk: PropTypes.func,
+    deleteContactThunk: PropTypes.func,
 };
 
 export default connect(
