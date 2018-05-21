@@ -26,7 +26,7 @@ class ContactFormContainer extends Component {
     getContactFromUrl = (pathname) => {
         const contactId = pathname.split('/')[2];
 
-        if (Number.isInteger(contactId)) {
+        if (parseInt(contactId, 10)) {
             this.props.getCurrentContactThunk(contactId);
         }
     };
@@ -70,13 +70,11 @@ class ContactFormContainer extends Component {
         } else {
             this.props.updateContactThunk({
                 ...contact,
-                groupId: +contact.groupId,
+                groupId: parseInt(contact.groupId, 10),
             }).then((newContact) => {
                 this.props.history.push(`/contacts/${newContact.id}`);
             });
         }
-
-
     };
 
     back = () => {
@@ -103,6 +101,13 @@ ContactFormContainer.propTypes = {
     getCurrentContactThunk: PropTypes.func,
     updateContactThunk: PropTypes.func,
     addContactThunk: PropTypes.func,
+    history: PropTypes.shape({
+        goBack: PropTypes.func,
+        push: PropTypes.func,
+    }),
+    location: PropTypes.shape({
+        pathname: PropTypes.string,
+    }),
 };
 
 export default compose(

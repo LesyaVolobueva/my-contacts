@@ -43,8 +43,5 @@ FilterContainer.propTypes = {
 
 export default connect(
     null,
-    {
-        filterByGroups,
-        filterByName,
-    }
+    { filterByGroups, filterByName }
 )(FilterContainer);

@@ -1,9 +1,14 @@
 import * as types from './types';
+import { getMaxPages } from './utils';
 
 export const initialState = {
     contacts: [],
     groups: [],
     currentContact: null,
+    currentPage: 1,
+    maxItems: 3,
+    maxPages: null,
+    renderPagination: false,
 };
 
 export default function reducer(state = initialState, action) {
@@ -56,7 +61,31 @@ export default function reducer(state = initialState, action) {
                 ...state,
                 currentContact: payload,
             };
+        case types.NEXT_PAGE :
+            return {
+                ...state,
+                currentPage: state.currentPage + 1,
+            };
 
+        case types.PREV_PAGE :
+            return {
+                ...state,
+                currentPage: state.currentPage - 1,
+            };
+
+        case types.SET_PAGE: {
+            return {
+                ...state,
+                currentPage: payload,
+            };
+        }
+
+        case types.SET_MAX_PAGES:
+            return {
+                ...state,
+                maxPages: getMaxPages(state.maxItems, payload.length),
+                renderPagination: payload.length > state.maxItems,
+            };
 
         default:
             return state;

@@ -8,7 +8,10 @@ export const getContacts = (payload) => ({
 export const getContactsThunk = () => (
     (dispatch, _, api) => (
         api('contacts')
-            .then((response) => dispatch(getContacts(response.data)))
+            .then((response) =>  {
+                dispatch(getContacts(response.data));
+                dispatch(setMaxPages(response.data));
+            })
     )
 );
 
@@ -79,4 +82,23 @@ export const addContactThunk = (contact) => (
             })
     )
 );
+
+
+export const goToNextPage = () => ({
+    type: types.NEXT_PAGE,
+});
+
+export const goToPrevPage = () => ({
+    type: types.PREV_PAGE,
+});
+
+export const goToPage = (payload) => ({
+    type: types.SET_PAGE,
+    payload,
+});
+
+export const setMaxPages = (payload) => ({
+    type: types.SET_MAX_PAGES,
+    payload,
+});
 

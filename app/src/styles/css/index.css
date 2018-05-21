@@ -129,7 +129,7 @@
   margin: 20px auto;
   justify-content: flex-end; }
 
-.button, .filter__search-btn {
+.button, .filter__search-btn, .pagi {
   background: #333;
   padding: 10px 15px;
   min-width: 100px;
@@ -218,6 +218,22 @@
     flex-basis: 28%; }
     .filter__select select {
       width: 100%; }
+
+.pagination {
+  width: 60%;
+  margin: 20px auto;
+  display: flex;
+  justify-content: center; }
+
+.pagi {
+  margin: 0 10px;
+  min-width: auto; }
+  .pagi--active {
+    border: #000;
+    background: #000000; }
+  .pagi:disabled {
+    background: #cccccc;
+    cursor: default; }
 
 body {
   padding: 0;

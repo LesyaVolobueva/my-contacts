@@ -1,0 +1,22 @@
+.pagination {
+  width: 60%;
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+}
+
+.pagi {
+  @extend .button;
+  margin: 0 10px;
+  min-width: auto;
+
+  &--active {
+    border: #000;
+    background: #000000;
+  }
+
+  &:disabled {
+    background: #cccccc;
+    cursor: default;
+  }
+}

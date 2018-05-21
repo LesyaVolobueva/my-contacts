@@ -12,15 +12,12 @@ import { Link } from 'react-router-dom';
 import ContactsList from './component';
 import Filter from '../Filter';
 import Button from '../../components/Button';
+import Pagination from '../Pagination';
 
 class ContactsListContainer extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            modalOpen: false,
-        };
-    }
+    state = {
+        modalOpen: false,
+    };
 
     componentDidMount() {
         this.props.getContactsThunk();
@@ -49,7 +46,7 @@ class ContactsListContainer extends Component {
     };
 
     render() {
-        const { contacts, groups, deleteContactThunk } = this.props;
+        const { contacts, groups, renderPagination } = this.props;
         const { modalOpen, deleteId } = this.state;
 
         return (
@@ -72,6 +69,7 @@ class ContactsListContainer extends Component {
                     groups={groups}
                     showModal={this.showModal}
                 />
+                {renderPagination && <Pagination />}
             </div>
         );
     }
@@ -80,6 +78,7 @@ class ContactsListContainer extends Component {
 ContactsListContainer.propTypes = {
     contacts: PropTypes.arrayOf(Object),
     groups: PropTypes.arrayOf(Object),
+    renderPagination: PropTypes.bool,
     getGroupsThunk: PropTypes.func,
     getContactsThunk: PropTypes.func,
     deleteContactThunk: PropTypes.func,
@@ -89,6 +88,8 @@ export default connect(
     state => ({
         contacts: getFilteredContacts(state),
         groups: state.contacts.groups,
+        maxItems: state.contacts.maxItems,
+        renderPagination: state.contacts.renderPagination,
     }),
     {
         getContactsThunk,

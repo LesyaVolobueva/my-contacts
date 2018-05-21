@@ -11,12 +11,14 @@ const Button = ({
             type={type}
             onClick={onClick}
             className='button'
-        >{children}</button>
+        >
+            {children}
+        </button>
     );
 };
 
 Button.propTypes = {
-    onCLick: PropTypes.func,
+    onClick: PropTypes.func,
     children: PropTypes.any,
     type: PropTypes.string,
 };
