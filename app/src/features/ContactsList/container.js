@@ -7,7 +7,9 @@ import {
     getGroupsThunk,
     deleteContactThunk,
 } from '../actions';
+import { getFilteredContacts } from '../selectors';
 import ContactsList from './component';
+import Filter from '../Filter';
 
 class ContactsListContainer extends Component {
     constructor(props) {
@@ -17,6 +19,7 @@ class ContactsListContainer extends Component {
             modalOpen: false,
         };
     }
+
     componentDidMount() {
         if (!this.props.contacts.length) {
             this.props.getContactsThunk();
@@ -52,6 +55,7 @@ class ContactsListContainer extends Component {
                     title='Are you sure to delete this contact?'
                     onConfirm={deleteContactThunk.bind(null, deleteId)}
                 />
+                <Filter groups={groups}/>
                 <ContactsList
                     contacts={contacts}
                     groups={groups}
@@ -71,7 +75,7 @@ ContactsListContainer.propTypes = {
 
 export default connect(
     state => ({
-        contacts: state.contacts.contacts,
+        contacts: getFilteredContacts(state),
         groups: state.contacts.groups,
     }),
     {

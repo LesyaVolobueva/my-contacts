@@ -2,8 +2,8 @@ import React from 'react';
 import { Route, Switch } from 'react-router';
 import ContactsList from './features/ContactsList';
 import CallsHistory from './features/CallsHistory';
-import ContactForm from './features/ContactForm';
-
+import ContactEditForm from './features/ContactEditForm';
+import Contact from './features/Contact';
 
 class Routes extends React.Component {
     render() {
@@ -16,7 +16,12 @@ class Routes extends React.Component {
                         exact
                     />
                     <Route
-                        component={ContactForm}
+                        component={ContactEditForm}
+                        path='/edit/:id'
+                        exact
+                    />
+                    <Route
+                        component={Contact}
                         path='/contacts/:id'
                         exact
                     />

@@ -1,6 +1,7 @@
 .contact-list {
   display: flex;
-  width: 70%;
+  width: 50%;
+  min-height: 200px;
   margin: 20px auto;
   padding: 15px;
   border: 1px solid #333333;
@@ -8,5 +9,7 @@
   font-family: sans-serif;
   font-size: 16px;
   flex-wrap: wrap; }
+  .contact-list__no-items {
+    color: #fff; }
 
 /*# sourceMappingURL=ContactList.css.map */

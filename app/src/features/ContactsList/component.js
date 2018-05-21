@@ -7,6 +7,14 @@ const ContactsList = ({
     groups,
     showModal,
 }) => {
+    if (!contacts.length) {
+        return (
+            <div className="contact-list" >
+                <span className='contact-list__no-items'>No contacts :(</span>
+            </div>
+        );
+    }
+
     return (
         <div className="contact-list" >
             {contacts.map(item => (
@@ -22,6 +30,10 @@ const ContactsList = ({
     );
 };
 
-ContactsList.propTypes = {};
+ContactsList.propTypes = {
+    contacts: PropTypes.arrayOf(Object),
+    groups: PropTypes.arrayOf(Object),
+    showModal: PropTypes.func,
+};
 
 export default ContactsList;

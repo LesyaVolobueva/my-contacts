@@ -42,6 +42,10 @@
     font-size: 30px;
     font-family: sans-serif;
     text-decoration: none; }
+    .contact__name--render {
+      color: #fff;
+      text-align: center;
+      width: 100%; }
   .contact__fav, .contact__group {
     border: 2px solid #ccc;
     -webkit-border-radius: 10px;
@@ -76,7 +80,18 @@
     width: 40px;
     height: 40px;
     cursor: pointer; }
-    .contact__icon img {
+    .contact__icon--render {
+      width: 45px;
+      height: 45px; }
+    .contact__icon .img {
       width: 100%; }
+
+.icons {
+  width: 40%;
+  margin: auto;
+  background: #ffffff;
+  display: flex;
+  justify-content: space-around;
+  padding: 15px; }
 
 /*# sourceMappingURL=Contact.css.map */

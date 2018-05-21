@@ -6,7 +6,6 @@ import history from '../../../imgs/history.png';
 import deleteImg from '../../../imgs/delete.png';
 
 const ContactItem = ({ changeFavourites, contact, group, deleteContact }) => {
-
     return (
         <div className='contact'>
             <div className='contact__photo'>
@@ -47,19 +46,31 @@ const ContactItem = ({ changeFavourites, contact, group, deleteContact }) => {
                 <div className="contact__footer">
                     <div className="contact__icon">
                         <Link to={`/calls/${contact.id}`}>
-                            <img src={history} alt="history"/>
+                            <img
+                                className='img'
+                                src={history}
+                                alt="history"
+                            />
                         </Link>
                     </div>
                     <div className="contact__icon">
-                        <Link to={`/contacts/${contact.id}`}>
-                            <img src={edit} alt="edit"/>
+                        <Link to={`/edit/${contact.id}`}>
+                            <img
+                                className='img'
+                                src={edit}
+                                alt="edit"
+                            />
                         </Link>
                     </div>
                     <div
                         className="contact__icon"
                         onClick={deleteContact.bind(null, contact.id)}
                     >
-                        <img src={deleteImg} alt="delete"/>
+                        <img
+                            className='img'
+                            src={deleteImg}
+                            alt="delete"
+                        />
                     </div>
                 </div>
             </div>

@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Button = ({
-    onCLick,
+    onClick,
     children,
     type,
 }) => {
     return (
         <button
             type={type}
-            onClick={onCLick}
+            onClick={onClick}
             className='button'
         >{children}</button>
     );

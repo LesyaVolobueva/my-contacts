@@ -55,6 +55,12 @@
     font-size: 30px;
     font-family: sans-serif;
     text-decoration: none;
+
+    &--render {
+      color: #fff;
+      text-align: center;
+      width: 100%;
+    }
   }
 
   &__fav {
@@ -105,8 +111,22 @@
     height: 40px;
     cursor: pointer;
 
-    img {
+    &--render {
+      width: 45px;
+      height: 45px;
+    }
+
+    .img {
       width: 100%;
     }
   }
+}
+
+.icons {
+  width: 40%;
+  margin: auto;
+  background: #ffffff;
+  display: flex;
+  justify-content: space-around;
+  padding: 15px;
 }

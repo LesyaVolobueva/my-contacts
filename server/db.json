@@ -3,12 +3,12 @@
     {
       "id": 1,
       "name": "Daddy",
-      "birthday": "1970/09/04",
+      "birthday": "1971-04-09",
       "photoUrl": "https://www.jpost.com/HttpHandlers/ShowImage.ashx?id=367614",
-      "mobPhone": "098 305 48 81",
-      "workPhone": null,
+      "mobPhone": "098-305-4881",
+      "workPhone": "",
       "email": "mehaanik@mail.ru",
-      "description": "",
+      "description": "Hello, it's me",
       "favourites": true,
       "groupId": 1
     },
@@ -70,7 +70,7 @@
       "email": null,
       "description": "The last day at school is on May, 25",
       "favourites": true,
-      "groupId": 1
+      "groupId": "2"
     },
     {
       "id": 7,

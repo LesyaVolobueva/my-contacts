@@ -1,0 +1,44 @@
+.filter {
+  width: 50%;
+  padding: 20px;
+  margin: 20px auto;
+  background: #333;
+  color: #fff;
+  min-height: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  &__search {
+    flex-basis: 60%;
+    display: flex;
+
+    &-input {
+      @extend .contact__input;
+      flex-basis: 70%;
+    }
+
+    &-btn {
+      @extend .button;
+      text-align: center;
+      flex-basis: 10%;
+      background: #ffffff;
+      border: 2px solid #000;
+
+      img {
+        width: 25px;
+      }
+    }
+  }
+
+  &__select {
+    flex-basis: 28%;
+
+    select {
+      @extend .contact__input;
+      width: 100%;
+
+    }
+  }
+
+}
