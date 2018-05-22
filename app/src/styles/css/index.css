@@ -20,9 +20,9 @@
   margin-bottom: 20px;
   background: #fff;
   justify-content: space-between;
-  transition: text-shadow ease-in 1s; }
+  transition: box-shadow ease-in-out 0.5s; }
   .contact:hover {
-    box-shadow: 5px 10px 5px #000; }
+    box-shadow: 10px 10px 10px #000; }
   .contact__photo {
     height: 180px;
     border: 1px solid #333333;
@@ -119,7 +119,8 @@
   background: #333;
   font-family: sans-serif;
   font-size: 16px;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  box-sizing: border-box; }
   .contact-list__no-items {
     color: #fff; }
 
@@ -127,7 +128,8 @@
   display: flex;
   width: 60%;
   margin: 20px auto;
-  justify-content: flex-end; }
+  justify-content: flex-end;
+  box-sizing: border-box; }
 
 .button, .filter__search-btn, .pagi {
   background: #333;
@@ -201,7 +203,8 @@
   min-height: 50px;
   display: flex;
   justify-content: space-around;
-  align-items: center; }
+  align-items: center;
+  box-sizing: border-box; }
   .filter__search {
     flex-basis: 60%;
     display: flex; }
@@ -221,13 +224,13 @@
 
 .pagination {
   width: 60%;
-  margin: 20px auto;
+  margin: 20px auto 50px;
   display: flex;
   justify-content: center; }
 
 .pagi {
   margin: 0 10px;
-  min-width: auto; }
+  min-width: inherit; }
   .pagi--active {
     border: #000;
     background: #000000; }

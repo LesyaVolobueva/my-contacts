@@ -7,28 +7,21 @@ import {
     goToPrevPage,
     setMaxPages,
 } from '../shared/actions';
-import SmallPagination from './SmallPagination';
+import Pagination from './component';
+
 
 class PaginationContainer extends Component {
     render() {
         const { goToNextPage, goToPrevPage, currentPage, maxPages, goToPage } = this.props;
-        const btnCount = new Array(maxPages).fill(' ');
-
-        if (maxPages < 7) {
-            return (
-                <SmallPagination
-                    goToNextPage={goToNextPage}
-                    goToPrevPage={goToPrevPage}
-                    currentPage={currentPage}
-                    maxPages={maxPages}
-                    goToPage={goToPage}
-                    btnCount={btnCount}
-                />
-            );
-        }
 
         return (
-            <div>...to be continued</div>
+            <Pagination
+                goToNextPage={goToNextPage}
+                goToPrevPage={goToPrevPage}
+                currentPage={currentPage}
+                maxPages={maxPages}
+                goToPage={goToPage}
+            />
         );
     }
 }

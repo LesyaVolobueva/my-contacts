@@ -1,6 +1,6 @@
 .pagination {
   width: 60%;
-  margin: 20px auto;
+  margin: 20px auto 50px;
   display: flex;
   justify-content: center;
 }
@@ -8,7 +8,7 @@
 .pagi {
   @extend .button;
   margin: 0 10px;
-  min-width: auto;
+  min-width: inherit;
 
   &--active {
     border: #000;
