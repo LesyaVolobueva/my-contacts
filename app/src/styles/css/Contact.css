@@ -5,9 +5,9 @@
   margin-bottom: 20px;
   background: #fff;
   justify-content: space-between;
-  transition: text-shadow ease-in 1s; }
+  transition: box-shadow ease-in-out 0.5s; }
   .contact:hover {
-    box-shadow: 5px 10px 5px #000; }
+    box-shadow: 10px 10px 10px #000; }
   .contact__photo {
     height: 180px;
     border: 1px solid #333333;
