@@ -133,30 +133,6 @@
       "groupId": 3
     },
     {
-      "id": 13,
-      "name": "Angella",
-      "birthday": "1998/08/14",
-      "photoUrl": "https://pbs.twimg.com/profile_images/823598681605607425/mxLudyhs_400x400.jpg",
-      "mobPhone": "068 944 81 25",
-      "workPhone": "",
-      "email": "sofiHoney@mail.ru",
-      "description": "Will go home on the next weekends",
-      "favourites": false,
-      "groupId": ""
-    },
-    {
-      "id": 14,
-      "name": "Katya",
-      "birthday": "1998/08/14",
-      "photoUrl": "https://www.argospetinsurance.co.uk/assets/uploads/2017/12/cat-pet-animal-domestic-104827.jpeg",
-      "mobPhone": "068 944 81 25",
-      "workPhone": "",
-      "email": "sofiHoney@mail.ru",
-      "description": "Will go home on the next weekends",
-      "favourites": false,
-      "groupId": ""
-    },
-    {
       "id": 15,
       "name": "Vova",
       "birthday": "1998/08/14",
@@ -167,42 +143,6 @@
       "description": "Will go home on the next weekends",
       "favourites": false,
       "groupId": 2
-    },
-    {
-      "id": 16,
-      "name": "Aleshya",
-      "birthday": "1998/08/14",
-      "photoUrl": "https://media.mnn.com/assets/images/2013/05/grumpyCatComplain.jpg.838x0_q80.jpg",
-      "mobPhone": "068-111-2222",
-      "workPhone": "",
-      "email": "sofiHoney@mail.ru",
-      "description": "Will go home on the next weekends",
-      "favourites": false,
-      "groupId": ""
-    },
-    {
-      "id": 17,
-      "name": "Sofia",
-      "birthday": "1998/08/14",
-      "photoUrl": "https://www.meme-arsenal.com/memes/86d628fc8c5d71df4ac7156a2daf7552.jpg",
-      "mobPhone": "068 944 81 25",
-      "workPhone": "",
-      "email": "sofiHoney@mail.ru",
-      "description": "Will go home on the next weekends",
-      "favourites": true,
-      "groupId": null
-    },
-    {
-      "id": 18,
-      "photoUrl": "https://www.teksteshqip.com/img_upz/allart_full/63351.jpg",
-      "name": "Zaitcev",
-      "birthday": "2018-05-19",
-      "mobPhone": "032-568-7444",
-      "workPhone": "324-579-8641",
-      "email": "zaitcev@gmail.vom",
-      "groupId": "3",
-      "favourites": false,
-      "description": ""
     }
   ],
   "groups": [
@@ -291,16 +231,6 @@
       "phone": "098-305-4883"
     },
     {
-      "id": 8,
-      "contactId": 4,
-      "time": "19:02",
-      "date": "2017/10/10",
-      "duration": 123,
-      "incoming": false,
-      "status": "",
-      "phone": "098-305-4883"
-    },
-    {
       "id": 9,
       "contactId": 3,
       "time": "19:02",
@@ -319,46 +249,6 @@
       "incoming": true,
       "status": "missed",
       "phone": "098-305-4883"
-    },
-    {
-      "id": 11,
-      "contactId": 14,
-      "time": "19:02",
-      "date": "2017/10/10",
-      "duration": 1203,
-      "incoming": false,
-      "status": "",
-      "phone": "098-305-4883"
-    },
-    {
-      "id": 12,
-      "contactId": 13,
-      "time": "19:02",
-      "date": "2017/10/10",
-      "duration": 1202,
-      "incoming": true,
-      "status": "",
-      "phone": "068 944 81 25"
-    },
-    {
-      "id": 13,
-      "contactId": 17,
-      "time": "19:02",
-      "date": "2017/10/10",
-      "duration": 0,
-      "incoming": true,
-      "status": "canceled",
-      "phone": "068 944 81 25"
-    },
-    {
-      "id": 14,
-      "contactId": 17,
-      "time": "22:22",
-      "date": "2017/10/10",
-      "duration": 0,
-      "incoming": true,
-      "status": "canceled",
-      "phone": "068 944 81 25"
     },
     {
       "id": 15,

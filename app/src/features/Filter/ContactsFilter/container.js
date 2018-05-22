@@ -39,6 +39,7 @@ class FilterContainer extends Component {
 FilterContainer.propTypes = {
     filterByGroups: PropTypes.func,
     filterByName: PropTypes.func,
+    groups: PropTypes.arrayOf(Object),
 };
 
 export default connect(

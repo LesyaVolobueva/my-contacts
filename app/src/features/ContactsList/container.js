@@ -23,10 +23,9 @@ class ContactsListContainer extends Component {
     };
 
     componentDidMount() {
-        const { getContactsThunk, groups, getGroupsThunk } = this.props;
+        const { getContactsThunk, getGroupsThunk } = this.props;
         getContactsThunk();
         getGroupsThunk();
-
     }
 
     componentWillReceiveProps(nextProps) {
@@ -39,7 +38,6 @@ class ContactsListContainer extends Component {
 
         if (nextProps.currentContact) {
             getCurrentContact(null);
-
         }
     }
 
@@ -82,13 +80,13 @@ class ContactsListContainer extends Component {
                     title='Are you sure to delete this contact?'
                     onConfirm={this.onConfirm.bind(null, deleteId)}
                 />
-                <Filter groups={groups}/>
+                <Filter groups={groups} />
                 <ContactsList
                     contacts={contactsForPage}
                     groups={groups}
                     showModal={this.showModal}
                 />
-                {renderPagination && <Pagination/>}
+                {renderPagination && <Pagination />}
             </div>
         );
     }
@@ -100,6 +98,7 @@ ContactsListContainer.propTypes = {
     renderPagination: PropTypes.bool,
     getGroupsThunk: PropTypes.func,
     getContactsThunk: PropTypes.func,
+    getCurrentContact: PropTypes.func,
     deleteContactThunk: PropTypes.func,
     setMaxPages: PropTypes.func,
     maxItems: PropTypes.number,

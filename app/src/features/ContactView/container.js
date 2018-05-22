@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
 import { getCurrentContactThunk, getGroupsThunk, deleteContactThunk } from '../shared/actions';
-import Contact from './component'
+import Contact from './component';
 import Modal from '../../components/Modal';
 
 class ContactContainer extends Component {
@@ -69,11 +69,16 @@ class ContactContainer extends Component {
         if (groups.length && currentContact && currentContact.groupId) {
             return this.props.groups.find(
                 group => group.id === parseInt(currentContact.groupId, 10)
-            ).title
+            ).title;
         }
         return '';
     };
 
+    deleteContact = (id) => {
+        this.props.deleteContactThunk(id);
+        this.hideModal();
+        this.props.history.push('/');
+    };
 
     render() {
         const { currentContact } = this.props;
@@ -91,7 +96,7 @@ class ContactContainer extends Component {
                     open={modalOpen}
                     confirmTitle='Delete'
                     title='Are you sure to delete this contact?'
-                    onConfirm={deleteContactThunk.bind(null, id)}
+                    onConfirm={this.deleteContact.bind(null, id)}
                 />
                 <Contact
                     contact={contactView}
@@ -106,10 +111,16 @@ class ContactContainer extends Component {
 
 ContactContainer.propTypes = {
     groups: PropTypes.arrayOf(Object),
-    pathname: PropTypes.string,
+    location: PropTypes.shape({
+        pathname: PropTypes.string,
+    }),
+    history: PropTypes.shape({
+        push: PropTypes.func,
+    }),
     currentContact: PropTypes.shape(Object),
     getCurrentContactThunk: PropTypes.func,
     getGroupsThunk: PropTypes.func,
+    deleteContactThunk: PropTypes.func,
 };
 
 export default compose(
