@@ -18,13 +18,13 @@ export default function reducer(state = initialState, action) {
         case types.GET_CONTACTS :
             return {
                 ...state,
-                contacts: payload,
+                contacts: [...payload],
             };
 
         case types.GET_GROUPS :
             return {
                 ...state,
-                groups: payload,
+                groups: [...payload],
             };
 
         case types.UPDATE_CONTACT :

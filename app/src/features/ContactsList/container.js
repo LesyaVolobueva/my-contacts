@@ -25,10 +25,8 @@ class ContactsListContainer extends Component {
     componentDidMount() {
         const { getContactsThunk, groups, getGroupsThunk } = this.props;
         getContactsThunk();
+        getGroupsThunk();
 
-        if (groups.length) {
-            getGroupsThunk();
-        }
     }
 
     componentWillReceiveProps(nextProps) {
