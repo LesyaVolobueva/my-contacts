@@ -10,10 +10,10 @@
   font-size: 16px;
   flex-wrap: wrap;
   box-sizing: border-box;
+}
 
-  &__no-items {
-    color: #fff;
-  }
+.no-items {
+  color: #fff;
 }
 
 .create-new {

@@ -9,14 +9,14 @@ const ContactsList = ({
 }) => {
     if (!contacts.length) {
         return (
-            <div className="contact-list" >
-                <span className='contact-list__no-items'>No contacts :(</span>
+            <div className='contact-list' >
+                <span className='no-items'>No contacts :(</span>
             </div>
         );
     }
 
     return (
-        <div className="contact-list" >
+        <div className='contact-list' >
             {contacts.map(item => (
                 <Contact
                     key={item.id}

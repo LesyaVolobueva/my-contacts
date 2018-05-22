@@ -13,7 +13,7 @@ export default function reducer(state = initialState, action) {
                 ...state,
                 calls: [...payload],
             };
-            
+
         default:
             return state;
     }

@@ -4,9 +4,11 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
 import { getCallsThunk } from './actions';
+import CallsHistory from './component';
+import outgoing from '../../imgs/outgoing-call.png';
+import incoming from '../../imgs/incoming.png';
 
-
-class CallsHistory extends Component {
+class CallsHistoryContainer extends Component {
     componentDidMount() {
         const { getCallsThunk, location: { pathname } } = this.props;
         const id = pathname.split('/')[2];
@@ -16,25 +18,38 @@ class CallsHistory extends Component {
         }
     }
 
+    renderCallIcon = (incom) => {
+        if (incom) {
+            return incoming;
+        }
+        return outgoing;
+    };
+
+    getDuration = (seconds) => {
+        let hours = Math.floor(seconds / 360);
+        let minutes = Math.floor((seconds % 360) / 60);
+        let restSeconds = seconds - hours * 360 - minutes * 60;
+        minutes = minutes > 0 ? `${minutes}m` : '';
+        hours = hours > 0 ? `${hours}h` : '';
+        restSeconds = restSeconds > 0 ? `${restSeconds}s` : '';
+
+        return `${hours } ${minutes} ${restSeconds}`;
+    };
+
     render() {
         return (
-            <div>
-                <h3>CallsHistory</h3>
-            </div>
+            <CallsHistory
+                calls={this.props.calls}
+                renderCallIcon={this.renderCallIcon}
+                getDuration={this.getDuration}
+            />
         );
     }
 }
 
-CallsHistory.propTypes = {
-    calls: PropTypes.arrayOf({
-        id: PropTypes.number,
-        contactId: PropTypes.number,
-        phone: PropTypes.string,
-        status: PropTypes.string,
-        date: PropTypes.string,
-        duration: PropTypes.number,
-        time: PropTypes.string,
-    }),
+CallsHistoryContainer.propTypes = {
+    getCallsThunk: PropTypes.func,
+    calls: PropTypes.arrayOf(Object),
 };
 
 export default compose(
@@ -45,4 +60,4 @@ export default compose(
         }),
         { getCallsThunk }
     )
-)(CallsHistory);
+)(CallsHistoryContainer);
