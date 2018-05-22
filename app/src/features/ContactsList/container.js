@@ -8,6 +8,7 @@ import {
     deleteContactThunk,
     setMaxPages,
     goToPage,
+    getCurrentContact,
 } from '../shared/actions';
 import { getFilteredContacts } from '../shared/selectors';
 import { Link } from 'react-router-dom';
@@ -22,17 +23,25 @@ class ContactsListContainer extends Component {
     };
 
     componentDidMount() {
-        this.props.getContactsThunk();
+        const { getContactsThunk, groups, getGroupsThunk } = this.props;
+        getContactsThunk();
 
-        if (!this.props.groups.length) {
-            this.props.getGroupsThunk();
+        if (groups.length) {
+            getGroupsThunk();
         }
     }
 
     componentWillReceiveProps(nextProps) {
-        if (this.props.filteredContacts.length !== nextProps.filteredContacts.length) {
-            this.props.setMaxPages(nextProps.filteredContacts);
-            this.props.goToPage(1);
+        const { filteredContacts, setMaxPages, goToPage, getCurrentContact } = this.props;
+
+        if (filteredContacts.length !== nextProps.filteredContacts.length) {
+            setMaxPages(nextProps.filteredContacts);
+            goToPage(1);
+        }
+
+        if (nextProps.currentContact) {
+            getCurrentContact(null);
+
         }
     }
 
@@ -75,13 +84,13 @@ class ContactsListContainer extends Component {
                     title='Are you sure to delete this contact?'
                     onConfirm={this.onConfirm.bind(null, deleteId)}
                 />
-                <Filter groups={groups} />
+                <Filter groups={groups}/>
                 <ContactsList
                     contacts={contactsForPage}
                     groups={groups}
                     showModal={this.showModal}
                 />
-                {renderPagination && <Pagination />}
+                {renderPagination && <Pagination/>}
             </div>
         );
     }
@@ -108,6 +117,7 @@ export default connect(
         maxPages: state.contacts.maxPages,
         currentPage: state.contacts.currentPage,
         renderPagination: state.contacts.renderPagination,
+        currentContact: state.contacts.currentContact,
     }),
     {
         getContactsThunk,
@@ -115,5 +125,6 @@ export default connect(
         deleteContactThunk,
         setMaxPages,
         goToPage,
+        getCurrentContact,
     }
 )(ContactsListContainer);

@@ -93,14 +93,19 @@ const ContactEdit = ({
                 </div>
                 <div className='contact__field'>
                     <Button
+                        onClick={back}
+                        type='button'
+                        className='contact__save'
+                    >
+                        Back
+                    </Button>
+                    <Button
                         type='submit'
                         className='contact__save'
-                    >Save</Button>
-                        <Button
-                            onClick={back}
-                            type='button'
-                            className='contact__save'
-                        >Back</Button>
+                    >
+                        Save
+                    </Button>
+
                 </div>
             </form>
         </div>
