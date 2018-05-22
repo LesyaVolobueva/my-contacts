@@ -28,18 +28,19 @@
   padding: 20px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
-  border-radius: 5px; }
+  border-radius: 5px;
+  position: relative; }
 
 .contact__field {
   flex-basis: 100%;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   align-items: center;
   flex-wrap: wrap;
   font-family: sans-serif; }
   .contact__field img {
-    width: 50%;
+    width: 30%;
     margin: auto; }
 
 .inputError {

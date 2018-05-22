@@ -51,14 +51,14 @@
     {
       "id": 6,
       "name": "Sister",
-      "birthday": "2009/08/16",
+      "birthday": "1987-11-11",
       "photoUrl": "https://ia.media-imdb.com/images/M/MV5BNjg3OTg4MDczMl5BMl5BanBnXkFtZTgwODc0NzUwNjE@._V1_UX214_CR0,0,214,317_AL_.jpg",
       "mobPhone": "098 605 48 81",
-      "workPhone": "",
-      "email": "",
+      "workPhone": "018-796-5874",
+      "email": "foxe@woc.com",
       "description": "The last day at school is on May, 25",
       "favourites": true,
-      "groupId": 2
+      "groupId": 1
     },
     {
       "id": 7,
@@ -189,8 +189,20 @@
       "workPhone": "",
       "email": "sofiHoney@mail.ru",
       "description": "Will go home on the next weekends",
+      "favourites": true,
+      "groupId": null
+    },
+    {
+      "id": 18,
+      "photoUrl": "https://www.teksteshqip.com/img_upz/allart_full/63351.jpg",
+      "name": "Zaitcev",
+      "birthday": "2018-05-19",
+      "mobPhone": "032-568-7444",
+      "workPhone": "324-579-8641",
+      "email": "zaitcev@gmail.vom",
+      "groupId": "3",
       "favourites": false,
-      "groupId": 1
+      "description": ""
     }
   ],
   "groups": [
@@ -209,12 +221,49 @@
   ],
   "callHistory": [
     {
+      "id": 1,
       "contactId": 1,
       "time": "19:02",
       "date": "2017/10/10",
-      "duration": 120,
-      "cancelled": false,
-      "missed": false
+      "duration": 0,
+      "status": "missed",
+      "phone": "098-305-4883"
+    },
+    {
+      "id": 2,
+      "contactId": 1,
+      "time": "21:18",
+      "date": "2017/10/11",
+      "duration": 60,
+      "status": "incoming",
+      "phone": "098-305-4883"
+    },
+    {
+      "id": 3,
+      "contactId": 1,
+      "time": "19:02",
+      "date": "2017/10/12",
+      "duration": 2400,
+      "status": "outgoing",
+      "phone": "098-305-4883"
+    },
+    {
+      "id": 4,
+      "contactId": 1,
+      "time": "7:06",
+      "date": "2017/10/12",
+      "duration": 0,
+      "status": "noAnswer",
+      "phone": "098-305-4883"
+    },
+    {
+      "id": 5,
+      "contactId": 1,
+      "time": "13:55",
+      "date": "2017/10/13",
+      "duration": 1450,
+      "status": "outgoing",
+      "phone": "098-305-4883"
     }
   ]
 }

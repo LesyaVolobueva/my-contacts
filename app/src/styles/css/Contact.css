@@ -57,10 +57,14 @@
     color: #ccc;
     cursor: pointer; }
   .contact__group {
-    border: 2px solid #0a80b7;
+    border: none;
     color: #0a80b7;
     margin-right: 10px;
     cursor: default; }
+    .contact__group--render {
+      margin: auto;
+      padding: 0;
+      font-weight: bold; }
   .contact .active {
     border: 2px solid #33b70b;
     color: #33b70b; }
@@ -77,21 +81,50 @@
     justify-content: flex-end;
     display: flex; }
   .contact__icon {
-    width: 40px;
-    height: 40px;
-    cursor: pointer; }
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    margin: 0 5px; }
     .contact__icon--render {
       width: 45px;
-      height: 45px; }
+      height: 45px;
+      margin: 0 20px; }
     .contact__icon .img {
       width: 100%; }
+  .contact__row {
+    flex-basis: 100%;
+    display: flex;
+    color: #fff;
+    justify-content: center;
+    padding: 20px 0;
+    align-items: center;
+    border-bottom: 1px solid #fff; }
+  .contact__value {
+    color: #fff;
+    flex-basis: 60%;
+    font-size: 18px;
+    font-family: sans-serif;
+    letter-spacing: 1px; }
+    .contact__value--full {
+      flex-basis: 100%;
+      text-align: center; }
 
 .icons {
-  width: 40%;
+  flex-basis: 100%;
   margin: auto;
   background: #ffffff;
   display: flex;
-  justify-content: space-around;
-  padding: 15px; }
+  justify-content: center;
+  padding: 10px; }
+
+.goBack {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  width: 40px;
+  height: 50px;
+  cursor: pointer; }
+  .goBack img {
+    width: 100%; }
 
 /*# sourceMappingURL=Contact.css.map */

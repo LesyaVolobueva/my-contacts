@@ -7,7 +7,6 @@ import { getCurrentContactThunk, getGroupsThunk, deleteContactThunk } from '../s
 import Contact from './component'
 import Modal from '../../components/Modal';
 
-
 class ContactContainer extends Component {
     constructor(props) {
         super(props);
@@ -47,11 +46,43 @@ class ContactContainer extends Component {
         });
     };
 
+    back = () => {
+        this.props.history.goBack();
+    };
+
+    getOnlyFilledField = (contact) => {
+        const newContactView = {};
+
+        Object.keys(contact).map(prop => {
+            if (contact[prop]) {
+                newContactView[prop] = contact[prop];
+            }
+            return prop;
+        });
+
+        return newContactView;
+    };
+
+    findGroupTitle = () => {
+        const { groups, currentContact } = this.props;
+
+        if (groups.length && currentContact && currentContact.groupId) {
+            return this.props.groups.find(
+                group => group.id === parseInt(currentContact.groupId, 10)
+            ).title
+        }
+        return '';
+    };
+
 
     render() {
         const { currentContact } = this.props;
         const { modalOpen } = this.state;
         const id = currentContact ? currentContact.id : '';
+        const contactView = currentContact
+            ? this.getOnlyFilledField(currentContact)
+            : null;
+        const group = this.findGroupTitle();
 
         return (
             <div>
@@ -63,8 +94,10 @@ class ContactContainer extends Component {
                     onConfirm={deleteContactThunk.bind(null, id)}
                 />
                 <Contact
-                    contact={currentContact}
+                    contact={contactView}
                     showModal={this.showModal}
+                    goBack={this.back}
+                    group={group}
                 />
             </div>
         );
