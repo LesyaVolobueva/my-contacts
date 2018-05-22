@@ -7,7 +7,7 @@ export const initialState = {
     currentContact: null,
     currentPage: 1,
     maxItems: 3,
-    maxPages: null,
+    maxPages: 0,
     renderPagination: false,
 };
 

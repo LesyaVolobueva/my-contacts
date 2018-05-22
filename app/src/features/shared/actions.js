@@ -8,7 +8,7 @@ export const getContacts = (payload) => ({
 export const getContactsThunk = () => (
     (dispatch, _, api) => (
         api('contacts')
-            .then((response) =>  {
+            .then((response) => {
                 dispatch(getContacts(response.data));
                 dispatch(setMaxPages(response.data));
             })

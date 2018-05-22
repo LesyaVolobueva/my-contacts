@@ -97,6 +97,7 @@ class ContactFormContainer extends Component {
 
 ContactFormContainer.propTypes = {
     groups: PropTypes.arrayOf(Object),
+    contacts: PropTypes.arrayOf(Object),
     getGroupsThunk: PropTypes.func,
     getCurrentContactThunk: PropTypes.func,
     updateContactThunk: PropTypes.func,

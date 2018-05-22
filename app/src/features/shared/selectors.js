@@ -17,11 +17,13 @@ export const getContact = (state, ownProps) => {
 };
 
 export const getFilteredContacts = (state) => {
-    const { contacts, maxItems, currentPage } = state.contacts;
+    const { contacts } = state.contacts;
     const { filterByGroup, filterByName } = state.filter;
 
     let filteredContacts = filterByGroup
-        ? [...contacts].filter(contact => (+contact.groupId === +filterByGroup))
+        ? [...contacts].filter(contact => (
+            parseInt(contact.groupId, 10) === parseInt(filterByGroup, 10))
+        )
         : contacts;
 
     filteredContacts = filterByName
@@ -30,5 +32,5 @@ export const getFilteredContacts = (state) => {
         )
         : filteredContacts;
 
-    return filteredContacts.slice(maxItems * (currentPage - 1), maxItems * (currentPage + 1) );
+    return filteredContacts;
 };

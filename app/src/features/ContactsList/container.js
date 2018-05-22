@@ -6,6 +6,8 @@ import {
     getContactsThunk,
     getGroupsThunk,
     deleteContactThunk,
+    setMaxPages,
+    goToPage,
 } from '../shared/actions';
 import { getFilteredContacts } from '../shared/selectors';
 import { Link } from 'react-router-dom';
@@ -24,6 +26,13 @@ class ContactsListContainer extends Component {
 
         if (!this.props.groups.length) {
             this.props.getGroupsThunk();
+        }
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (this.props.filteredContacts.length !== nextProps.filteredContacts.length) {
+            this.props.setMaxPages(nextProps.filteredContacts);
+            this.props.goToPage(1);
         }
     }
 
@@ -46,8 +55,11 @@ class ContactsListContainer extends Component {
     };
 
     render() {
-        const { contacts, groups, renderPagination } = this.props;
+        const { filteredContacts, groups, renderPagination, maxItems, currentPage } = this.props;
         const { modalOpen, deleteId } = this.state;
+        const start = maxItems * (currentPage - 1);
+        const end = maxItems * (currentPage);
+        const contactsForPage = filteredContacts.slice(start, end);
 
         return (
             <div>
@@ -65,7 +77,7 @@ class ContactsListContainer extends Component {
                 />
                 <Filter groups={groups} />
                 <ContactsList
-                    contacts={contacts}
+                    contacts={contactsForPage}
                     groups={groups}
                     showModal={this.showModal}
                 />
@@ -76,24 +88,32 @@ class ContactsListContainer extends Component {
 }
 
 ContactsListContainer.propTypes = {
-    contacts: PropTypes.arrayOf(Object),
+    filteredContacts: PropTypes.arrayOf(Object),
     groups: PropTypes.arrayOf(Object),
     renderPagination: PropTypes.bool,
     getGroupsThunk: PropTypes.func,
     getContactsThunk: PropTypes.func,
     deleteContactThunk: PropTypes.func,
+    setMaxPages: PropTypes.func,
+    maxItems: PropTypes.number,
+    currentPage: PropTypes.number,
+    goToPage: PropTypes.func,
 };
 
 export default connect(
     state => ({
-        contacts: getFilteredContacts(state),
+        filteredContacts: getFilteredContacts(state),
         groups: state.contacts.groups,
         maxItems: state.contacts.maxItems,
+        maxPages: state.contacts.maxPages,
+        currentPage: state.contacts.currentPage,
         renderPagination: state.contacts.renderPagination,
     }),
     {
         getContactsThunk,
         getGroupsThunk,
         deleteContactThunk,
+        setMaxPages,
+        goToPage,
     }
 )(ContactsListContainer);
