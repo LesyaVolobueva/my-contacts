@@ -25,7 +25,7 @@ const SmallPagination = ({
                         className={`pagi ${currentPage === index + 1 ? 'pagi--active' : ''}`}
                         onClick={goToPage.bind(null, index + 1)}
                     >
-                        {index}
+                        {index + 1}
                     </button>
                 ))
             }

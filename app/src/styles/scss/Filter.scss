@@ -8,6 +8,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  box-sizing: border-box;
 
   &__search {
     flex-basis: 60%;

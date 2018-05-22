@@ -6,7 +6,7 @@ export const initialState = {
     groups: [],
     currentContact: null,
     currentPage: 1,
-    maxItems: 3,
+    maxItems: 5,
     maxPages: 0,
     renderPagination: false,
 };

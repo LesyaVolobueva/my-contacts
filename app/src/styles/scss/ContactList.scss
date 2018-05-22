@@ -9,6 +9,7 @@
   font-family: sans-serif;
   font-size: 16px;
   flex-wrap: wrap;
+  box-sizing: border-box;
 
   &__no-items {
     color: #fff;
@@ -20,4 +21,5 @@
   width: 60%;
   margin: 20px auto;
   justify-content: flex-end;
+  box-sizing: border-box;
 }
