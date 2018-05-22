@@ -117,14 +117,4 @@
   justify-content: center;
   padding: 10px; }
 
-.goBack {
-  position: absolute;
-  top: 50px;
-  left: 50px;
-  width: 40px;
-  height: 50px;
-  cursor: pointer; }
-  .goBack img {
-    width: 100%; }
-
 /*# sourceMappingURL=Contact.css.map */

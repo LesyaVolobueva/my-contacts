@@ -7,6 +7,9 @@ import { getCallsThunk } from './actions';
 import CallsHistory from './component';
 import outgoing from '../../imgs/outgoing-call.png';
 import incoming from '../../imgs/incoming.png';
+import back from '../../imgs/back.png';
+import Filter from '../Filter/CallsFilter';
+import { getFilteredCalls } from './selectors';
 
 class CallsHistoryContainer extends Component {
     componentDidMount() {
@@ -38,11 +41,23 @@ class CallsHistoryContainer extends Component {
 
     render() {
         return (
-            <CallsHistory
-                calls={this.props.calls}
-                renderCallIcon={this.renderCallIcon}
-                getDuration={this.getDuration}
-            />
+            <div className='relative'>
+                <div
+                    className='goBack'
+                    onClick={this.props.history.goBack}
+                >
+                    <img
+                        src={back}
+                        alt='go back'
+                    />
+                </div>
+                <Filter />
+                <CallsHistory
+                    calls={this.props.calls}
+                    renderCallIcon={this.renderCallIcon}
+                    getDuration={this.getDuration}
+                />
+            </div>
         );
     }
 }
@@ -50,13 +65,19 @@ class CallsHistoryContainer extends Component {
 CallsHistoryContainer.propTypes = {
     getCallsThunk: PropTypes.func,
     calls: PropTypes.arrayOf(Object),
+    history: PropTypes.shape({
+        goBack: PropTypes.func,
+    }),
+    location: PropTypes.shape({
+        pathname: PropTypes.string,
+    }),
 };
 
 export default compose(
     withRouter,
     connect(
         state => ({
-            calls: state.calls.calls,
+            calls: getFilteredCalls(state),
         }),
         { getCallsThunk }
     )

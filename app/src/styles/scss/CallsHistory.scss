@@ -1,6 +1,6 @@
 .calls {
   width: 50%;
-  margin: 20px auto;
+  margin: 0 auto 20px;
   min-height: 100px;
   background: #333333;
   padding: 20px;
@@ -9,6 +9,7 @@
   font-family: sans-serif;
   font-size: 16px;
   flex-wrap: wrap;
+  position: relative;
 }
 
 .call {
@@ -19,6 +20,10 @@
   padding: 20px;
   justify-content: space-between;
   align-items: center;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 
   &__icon {
     flex-basis: 15%;

@@ -10,4 +10,12 @@ export const filterByName = (payload) => ({
     payload,
 });
 
+export const changeFilterByIncoming = () => ({
+    type: types.FILTER_INCOMING,
+});
+
+export const changeFilterByOutgoing = () => ({
+    type: types.FILTER_OUTGOING,
+});
+
 

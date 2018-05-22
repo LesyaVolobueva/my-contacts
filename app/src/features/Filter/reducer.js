@@ -3,6 +3,8 @@ import * as types from './types';
 export const initialState = {
     filterByGroup: '',
     filterByName: '',
+    filterIncoming: false,
+    filterOutgoing: false,
 };
 
 export default function reducer(state = initialState, action) {
@@ -19,6 +21,20 @@ export default function reducer(state = initialState, action) {
             return {
                 ...state,
                 filterByGroup: payload,
+            };
+
+        case types.FILTER_INCOMING:
+            return {
+                ...state,
+                filterIncoming: !state.filterIncoming,
+                filterOutgoing: false,
+            };
+
+        case types.FILTER_OUTGOING:
+            return {
+                ...state,
+                filterOutgoing: !state.filterOutgoing,
+                filterIncoming: false,
             };
 
         default:

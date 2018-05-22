@@ -132,21 +132,11 @@
   justify-content: center;
   padding: 10px; }
 
-.goBack {
-  position: absolute;
-  top: 50px;
-  left: 50px;
-  width: 40px;
-  height: 50px;
-  cursor: pointer; }
-  .goBack img {
-    width: 100%; }
-
 .contact-list {
   display: flex;
   width: 60%;
   min-height: 100px;
-  margin: 20px auto;
+  margin: 0 auto 20px;
   padding: 15px;
   border: 1px solid #333333;
   background: #333;
@@ -232,7 +222,7 @@
 .filter {
   width: 60%;
   padding: 15px;
-  margin: 20px auto;
+  margin: 20px auto 0;
   background: #333;
   color: #fff;
   min-height: 50px;
@@ -240,6 +230,32 @@
   justify-content: space-around;
   align-items: center;
   box-sizing: border-box; }
+  .filter--calls {
+    width: 50%;
+    -webkit-border-radius: 15px 15px 0 0;
+    -moz-border-radius: 15px 15px 0 0;
+    border-radius: 15px 15px 0 0;
+    font-size: 22px;
+    padding: 0;
+    margin-bottom: 0; }
+  .filter__tab {
+    width: 50%;
+    text-align: center;
+    cursor: pointer;
+    border-right: 1px solid #1a1a1a;
+    padding: 15px;
+    font-family: sans-serif;
+    -webkit-border-radius: 15px 0 0 0;
+    -moz-border-radius: 15px 0 0 0;
+    border-radius: 15px 0 0 0;
+    transition: background-color ease-out 0.5s; }
+    .filter__tab:last-child {
+      border: none;
+      -webkit-border-radius: 0 15px 0 0;
+      -moz-border-radius: 0 15px 0 0;
+      border-radius: 0 15px 0 0; }
+    .filter__tab--active {
+      background: black; }
   .filter__search {
     flex-basis: 60%;
     display: flex; }
@@ -275,7 +291,7 @@
 
 .calls {
   width: 50%;
-  margin: 20px auto;
+  margin: 0 auto 20px;
   min-height: 100px;
   background: #333333;
   padding: 20px;
@@ -283,7 +299,8 @@
   display: flex;
   font-family: sans-serif;
   font-size: 16px;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  position: relative; }
 
 .call {
   display: flex;
@@ -293,6 +310,8 @@
   padding: 20px;
   justify-content: space-between;
   align-items: center; }
+  .call:last-child {
+    margin-bottom: 0; }
   .call__icon {
     flex-basis: 15%; }
     .call__icon img {
@@ -326,5 +345,18 @@
 body {
   padding: 0;
   margin: 0; }
+
+.goBack {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  width: 40px;
+  height: 50px;
+  cursor: pointer; }
+  .goBack img {
+    width: 100%; }
+
+.relative {
+  position: relative; }
 
 /*# sourceMappingURL=index.css.map */

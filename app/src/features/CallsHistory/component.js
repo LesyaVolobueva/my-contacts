@@ -18,7 +18,7 @@ const CallsHistory = ({ calls, renderCallIcon, getDuration }) => {
                 >
                     <div className='call__icon'>
                         <img
-                            src={renderCallIcon(call.status)}
+                            src={renderCallIcon(call.incoming)}
                             alt='callStatus'
                         />
                     </div>

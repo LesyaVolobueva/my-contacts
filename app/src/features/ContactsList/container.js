@@ -13,7 +13,7 @@ import {
 import { getFilteredContacts } from '../shared/selectors';
 import { Link } from 'react-router-dom';
 import ContactsList from './component';
-import Filter from '../Filter';
+import Filter from '../Filter/ContactsFilter/index';
 import Button from '../../components/Button';
 import Pagination from '../Pagination';
 
