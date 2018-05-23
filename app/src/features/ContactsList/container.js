@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Modal from '../../components/Modal';
+import { Link } from 'react-router-dom';
+
 import {
     getContactsThunk,
     getGroupsThunk,
@@ -11,11 +12,12 @@ import {
     getCurrentContact,
 } from '../shared/actions';
 import { getFilteredContacts } from '../shared/selectors';
-import { Link } from 'react-router-dom';
+
 import ContactsList from './component';
 import Filter from '../Filter/ContactsFilter/index';
 import Button from '../../components/Button';
 import Pagination from '../Pagination';
+import Modal from '../../components/Modal';
 
 class ContactsListContainer extends Component {
     state = {

@@ -7,12 +7,12 @@ import Button from '../../components/Button';
 const ContactEdit = ({
     required,
     email,
-    normalizePhone,
     updateContact,
     initialValues,
     groups,
     handleSubmit,
     back,
+    phone,
 }) => {
     return (
         <div>
@@ -40,8 +40,7 @@ const ContactEdit = ({
                     type='text'
                     component={CustomField}
                     label='Mobile phone'
-                    validate={[required]}
-                    normalize={normalizePhone}
+                    validate={[required, phone]}
                     placeholder='0xx-xxx-xxxx'
                 />
                 <Field
@@ -49,7 +48,7 @@ const ContactEdit = ({
                     type='text'
                     component={CustomField}
                     label='Work Phone'
-                    normalize={normalizePhone}
+                    validate={[phone]}
                     placeholder='0xx-xxx-xxxx'
                 />
                 <Field
@@ -115,6 +114,8 @@ const ContactEdit = ({
 ContactEdit.propTypes = {
     required: PropTypes.func,
     email: PropTypes.func,
+    phone: PropTypes.func,
+    back: PropTypes.func,
     normalizePhone: PropTypes.func,
     updateContact: PropTypes.func,
     initialValues: PropTypes.shape(Object),

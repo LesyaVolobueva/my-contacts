@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+
 import edit from '../../../imgs/edit.png';
 import history from '../../../imgs/history.png';
 import deleteImg from '../../../imgs/delete.png';

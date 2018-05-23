@@ -3,18 +3,20 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
-import { getCurrentContactThunk, getGroupsThunk, deleteContactThunk } from '../shared/actions';
+
+import {
+    getCurrentContactThunk,
+    getGroupsThunk,
+    deleteContactThunk
+} from '../shared/actions';
+
 import Contact from './component';
 import Modal from '../../components/Modal';
 
 class ContactContainer extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            modalOpen: false,
-        };
-    }
+    state = {
+        modalOpen: false,
+    };
 
     componentDidMount() {
         const { groups, location: { pathname }, getGroupsThunk } = this.props;
@@ -47,7 +49,7 @@ class ContactContainer extends Component {
     };
 
     back = () => {
-        this.props.history.goBack();
+        this.props.history.push('/');
     };
 
     getOnlyFilledField = (contact) => {

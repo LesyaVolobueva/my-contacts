@@ -3,13 +3,13 @@
     {
       "id": 1,
       "name": "Daddy",
-      "birthday": "1971-04-09",
+      "birthday": "",
       "photoUrl": "https://www.jpost.com/HttpHandlers/ShowImage.ashx?id=367614",
-      "mobPhone": "098-305-4883",
-      "workPhone": "067-267-3543",
+      "mobPhone": "093 067 34 55",
+      "workPhone": "093 067 34 55",
       "email": "mehaanik@mail.ru",
       "description": "Hello, it's me...",
-      "favourites": true,
+      "favourites": false,
       "groupId": 1
     },
     {

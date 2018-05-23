@@ -4,7 +4,9 @@ import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { reduxForm } from 'redux-form';
+
 import ContactEdit from './component';
+
 import {
     updateContactThunk,
     getGroupsThunk,
@@ -12,6 +14,8 @@ import {
     addContactThunk,
 } from '../shared/actions';
 import { getContact } from '../shared/selectors';
+
+const phoneRegex = /^((\+38)?(\(?0\d{2}\)?)?( |-)?(\d{3})( |-)?(\d{2}( |-)?\d{2}))$/;
 
 class ContactFormContainer extends Component {
     componentDidMount() {
@@ -31,35 +35,19 @@ class ContactFormContainer extends Component {
         }
     };
 
-    required = value => (value ? undefined : 'Required');
+    isRequired = value => (value ? undefined : 'Required');
 
-    number = value => (
-        value && isNaN(Number(value))
-            ? 'Must be a number'
+    isPhoneNumber = value => (
+        value && !phoneRegex.test(value)
+            ? 'Invalid phone'
             : undefined
     );
 
-    email = value => (
+    isEmail = value => (
         value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)
             ? 'Invalid email address'
             : undefined
     );
-
-    normalizePhone = (value) => {
-        if (!value) {
-            return value;
-        }
-
-        const onlyNums = value.replace(/[^\d]/g, '');
-
-        if (onlyNums.length <= 3) {
-            return onlyNums;
-        }
-        if (onlyNums.length <= 7) {
-            return `${onlyNums.slice(0, 3)}-${onlyNums.slice(3)}`;
-        }
-        return `${onlyNums.slice(0, 3)}-${onlyNums.slice(3, 6)}-${onlyNums.slice(6, 10)}`;
-    };
 
     saveContact = (contact) => {
         if (!contact.id) {
@@ -85,9 +73,9 @@ class ContactFormContainer extends Component {
         return (
             <ContactEdit
                 {...this.props}
-                required={this.required}
-                email={this.email}
-                normalizePhone={this.normalizePhone}
+                required={this.isRequired}
+                email={this.isEmail}
+                phone={this.isPhoneNumber}
                 updateContact={this.saveContact}
                 back={this.back}
             />

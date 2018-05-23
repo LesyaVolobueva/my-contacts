@@ -18,4 +18,8 @@ export const changeFilterByOutgoing = () => ({
     type: types.FILTER_OUTGOING,
 });
 
+export const resetFilters = () => ({
+    type: types.RESET_FILTERS,
+});
+
 

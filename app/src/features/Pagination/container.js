@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+
 import {
     goToNextPage,
     goToPage,
     goToPrevPage,
     setMaxPages,
 } from '../shared/actions';
+
 import Pagination from './component';
 
 

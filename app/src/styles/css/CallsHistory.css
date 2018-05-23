@@ -51,4 +51,12 @@
       width: 30px;
       margin: auto; }
 
+.calls__contact-name {
+  width: 50%;
+  text-align: center;
+  margin: 20px auto;
+  font-size: 30px;
+  letter-spacing: 1px;
+  font-family: sans-serif; }
+
 /*# sourceMappingURL=CallsHistory.css.map */

@@ -37,6 +37,13 @@ export default function reducer(state = initialState, action) {
                 filterIncoming: false,
             };
 
+            case types.RESET_FILTERS:
+            return {
+                ...state,
+                filterOutgoing: false,
+                filterIncoming: false,
+            };
+
         default:
             return state;
     }
