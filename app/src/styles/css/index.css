@@ -350,6 +350,18 @@
   letter-spacing: 1px;
   font-family: sans-serif; }
 
+.not-found {
+  background: #333;
+  height: calc(100vh - 63px);
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .not-found__header {
+    font-size: 72px;
+    font-family: sans-serif;
+    color: #ffffff;
+    letter-spacing: 2px; }
+
 body {
   padding: 0;
   margin: 0; }

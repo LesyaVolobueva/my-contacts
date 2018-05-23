@@ -4,6 +4,7 @@ import ContactsList from './features/ContactsList';
 import CallsHistory from './features/CallsHistory';
 import ContactEditForm from './features/ContactEditForm';
 import Contact from './features/ContactView';
+import NotFound from './components/NotFound';
 
 class Routes extends React.Component {
     render() {
@@ -28,6 +29,11 @@ class Routes extends React.Component {
                     <Route
                         component={CallsHistory}
                         path='/calls/:id'
+                        exact
+                    />
+                    <Route
+                        component={NotFound}
+                        path='*'
                         exact
                     />
                 </Switch>
