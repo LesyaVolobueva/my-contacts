@@ -9,7 +9,7 @@
       "workPhone": "093 067 34 55",
       "email": "mehaanik@mail.ru",
       "description": "Hello, it's me...",
-      "favourites": false,
+      "favourites": true,
       "groupId": 1
     },
     {

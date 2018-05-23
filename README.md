@@ -20,3 +20,5 @@ All you need to do is follow the steps:
    or
    ```npm start```
 
+ 4. project runs on ```localhost:3000```
+
