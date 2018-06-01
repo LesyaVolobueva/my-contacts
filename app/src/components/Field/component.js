@@ -30,7 +30,7 @@ const CustomField = ({
 CustomField.propTypes = {
     type: PropTypes.string,
     label: PropTypes.string,
-    input: PropTypes.shape(Object),
+    input: PropTypes.object,
     placeholder: PropTypes.string,
 };
 

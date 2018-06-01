@@ -118,7 +118,7 @@ ContactEdit.propTypes = {
     back: PropTypes.func,
     normalizePhone: PropTypes.func,
     updateContact: PropTypes.func,
-    initialValues: PropTypes.shape(Object),
+    initialValues: PropTypes.object,
     groups: PropTypes.arrayOf(Object),
     handleSubmit: PropTypes.func,
 };

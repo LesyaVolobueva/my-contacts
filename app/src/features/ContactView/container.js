@@ -119,7 +119,7 @@ ContactContainer.propTypes = {
     history: PropTypes.shape({
         push: PropTypes.func,
     }),
-    currentContact: PropTypes.shape(Object),
+    currentContact: PropTypes.object,
     getCurrentContactThunk: PropTypes.func,
     getGroupsThunk: PropTypes.func,
     deleteContactThunk: PropTypes.func,

@@ -106,7 +106,7 @@ const Contact = ({ contact, showModal, goBack, group }) => {
 };
 
 Contact.propTypes = {
-    contact: PropTypes.shape(Object),
+    contact: PropTypes.object,
     showModal: PropTypes.func,
 };
 
